@@ -2,7 +2,7 @@
 # Note that all I2C accesses are wrapped in try clauses with repeats
 
 import smbus, time
- 
+
 bus = smbus.SMBus(1) # For revision 1 Raspberry Pi, change to bus = smbus.SMBus(0)
 
 pzaddr = 0x22 # I2C address of Picon Zero
@@ -33,7 +33,7 @@ def getRevision():
             return [rval/256, rval%256]
         except:
             if (DEBUG):
-                print "Error in getRevision(), retrying"
+                print("Error in getRevision(), retrying")
 #---------------------------------------------
 
 
@@ -49,7 +49,7 @@ def setMotor (motor, value):
                 break
             except:
                 if (DEBUG):
-                    print "Error in setMotor(), retrying"
+                    print("Error in setMotor(), retrying")
 
 def forward (speed):
     setMotor (0, speed)
@@ -83,10 +83,10 @@ def readInput (channel):
                 return bus.read_word_data (pzaddr, channel + 1)
             except:
                 if (DEBUG):
-                    print "Error in readChannel(), retrying"
-                
+                    print("Error in readChannel(), retrying")
+
 #---------------------------------------------
-    
+
 #---------------------------------------------
 # Set configuration of selected output
 # 0: On/Off, 1: PWM, 2: Servo, 3: WS2812B
@@ -98,7 +98,7 @@ def setOutputConfig (output, value):
                 break
             except:
                 if (DEBUG):
-                    print "Error in setOutputConfig(), retrying"
+                    print("Error in setOutputConfig(), retrying")
 #---------------------------------------------
 
 #---------------------------------------------
@@ -114,7 +114,7 @@ def setInputConfig (channel, value, pullup = False):
                 break
             except:
                 if (DEBUG):
-                    print "Error in setInputConfig(), retrying"
+                    print("Error in setInputConfig(), retrying")
 #---------------------------------------------
 
 #---------------------------------------------
@@ -132,7 +132,7 @@ def setOutput (channel, value):
                 break
             except:
                 if (DEBUG):
-                    print "Error in setOutput(), retrying"
+                    print("Error in setOutput(), retrying")
 #---------------------------------------------
 
 #---------------------------------------------
@@ -145,7 +145,7 @@ def setPixel (Pixel, Red, Green, Blue, Update=True):
             break
         except:
             if (DEBUG):
-                print "Error in setPixel(), retrying"
+                print("Error in setPixel(), retrying")
 
 def setAllPixels (Red, Green, Blue, Update=True):
     pixelData = [100, Red, Green, Blue]
@@ -155,7 +155,7 @@ def setAllPixels (Red, Green, Blue, Update=True):
             break
         except:
             if (DEBUG):
-                print "Error in setAllPixels(), retrying"
+                print("Error in setAllPixels(), retrying")
 
 def updatePixels ():
     for i in range(RETRIES):
@@ -164,8 +164,8 @@ def updatePixels ():
             break
         except:
             if (DEBUG):
-                print "Error in updatePixels(), retrying"
-                        
+                print("Error in updatePixels(), retrying")
+
 #---------------------------------------------
 
 #---------------------------------------------
@@ -177,7 +177,7 @@ def setBrightness (brightness):
             break
         except:
             if (DEBUG):
-                print "Error in setBrightness(), retrying"
+                print("Error in setBrightness(), retrying")
 #---------------------------------------------
 
 #---------------------------------------------
@@ -190,10 +190,10 @@ def init (debug=False):
             break
         except:
             if (DEBUG):
-                print "Error in init(), retrying"
+                print("Error in init(), retrying")
     time.sleep(0.01)  #1ms delay to allow time to complete
     if (DEBUG):
-        print "Debug is", DEBUG
+        print("Debug is", DEBUG)
 #---------------------------------------------
 
 #---------------------------------------------
@@ -205,7 +205,6 @@ def cleanup ():
             break
         except:
             if (DEBUG):
-                print "Error in cleanup(), retrying"
+                print("Error in cleanup(), retrying")
     time.sleep(0.001)   # 1ms delay to allow time to complete
 #---------------------------------------------
-
