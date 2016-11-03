@@ -9,10 +9,9 @@ hcsr04.init()
 try:
     while True:
         distance = int(hcsr04.getDistance())
-        print "Distance:", distance
+        print("Distance:", distance)
         time.sleep(1)
 except KeyboardInterrupt:
-    print
+    print()
 finally:
     hcsr04.cleanup()
-

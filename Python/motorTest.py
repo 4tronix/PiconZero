@@ -1,8 +1,8 @@
-# Picon Zero Servo Test
-# Use arrow keys to move 2 servos on outputs 0 and 1 for Pan and Tilt
-# Use G and H to open and close the Gripper arm
+# Picon Zero Motor Test
+# Moves: Forward, Reverse, turn Right, turn Left, Stop - then repeat
 # Press Ctrl-C to stop
 #
+# To check wiring is correct ensure the order of movement as above is correct
 
 import piconzero as pz, time
 
@@ -40,64 +40,45 @@ def readkey(getchar_fn=None):
 
 speed = 60
 
-print("Tests the servos by using the arrow keys to control")
-print("Press <space> key to centre")
+print("Tests the motors by using the arrow keys to control")
+print("Use , or < to slow down")
+print("Use . or > to speed up")
+print("Speed changes take effect when the next arrow key is pressed")
 print("Press Ctrl-C to end")
 print()
 
-# Define which pins are the servos
-pan = 0
-tilt = 1
-grip = 2
-
 pz.init()
-
-# Set output mode to Servo
-pz.setOutputConfig(pan, 2)
-pz.setOutputConfig(tilt, 2)
-pz.setOutputConfig(grip, 2)
-
-# Centre all servos
-panVal = 90
-tiltVal = 90
-gripVal = 90
-pz.setOutput (pan, panVal)
-pz.setOutput (tilt, tiltVal)
-pz.setOutput (grip, gripVal)
 
 # main loop
 try:
     while True:
         keyp = readkey()
         if keyp == 'w' or ord(keyp) == 16:
-            panVal = max (0, panVal - 5)
-            print('Up', panVal)
+            pz.forward(speed)
+            print('Forward', speed)
         elif keyp == 'z' or ord(keyp) == 17:
-            panVal = min (180, panVal + 5)
-            print('Down', panVal)
+            pz.reverse(speed)
+            print('Reverse', speed)
         elif keyp == 's' or ord(keyp) == 18:
-            tiltVal = max (0, tiltVal - 5)
-            print('Right', tiltVal)
+            pz.spinRight(speed)
+            print('Spin Right', speed)
         elif keyp == 'a' or ord(keyp) == 19:
-            tiltVal = min (180, tiltVal + 5)
-            print('Left', tiltVal)
-        elif keyp == 'g':
-            gripVal = max (0, gripVal - 5)
-            print('Open', gripVal)
-        elif keyp == 'h':
-            gripVal = min (180, gripVal + 5)
-            print('Close', gripVal)
+            pz.spinLeft(speed)
+            print('Spin Left', speed)
+        elif keyp == '.' or keyp == '>':
+            speed = min(100, speed+10)
+            print('Speed+', speed)
+        elif keyp == ',' or keyp == '<':
+            speed = max (0, speed-10)
+            print('Speed-', speed)
         elif keyp == ' ':
-            panVal = tiltVal = gripVal = 90
-            print('Centre')
+            pz.stop()
+            print('Stop')
         elif ord(keyp) == 3:
             break
-        pz.setOutput (pan, panVal)
-        pz.setOutput (tilt, tiltVal)
-        pz.setOutput (grip, gripVal)
 
 except KeyboardInterrupt:
-    print()
+    print
 
 finally:
     pz.cleanup()
