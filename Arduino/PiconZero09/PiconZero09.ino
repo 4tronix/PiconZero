@@ -31,10 +31,10 @@ Register  Name      Type  Values
 11  Output3_Data    Byte  Data value(s)
 12  Output4_Data    Byte  Data value(s)
 13  Output5_Data    Byte  Data value(s)
-14  Input0_Config   Byte  0: Digital, 1:Analog, 2:DS18B20, 3:DHT11 (NB. 0x80 is Digital input with pullup), 4:PWM
-15  Input1_Config   Byte  0: Digital, 1:Analog, 2:DS18B20, 3:DHT11 (NB. 0x80 is Digital input with pullup), 4:PWM 
-16  Input2_Config   Byte  0: Digital, 1:Analog, 2:DS18B20, 3:DHT11 (NB. 0x80 is Digital input with pullup), 4:PWM
-17  Input3_Config   Byte  0: Digital, 1:Analog, 2:DS18B20, 3:DHT11 (NB. 0x80 is Digital input with pullup), 4:PWM
+14  Input0_Config   Byte  0: Digital, 1:Analog, 2:DS18B20, 3:DHT11 (NB. 0x80 is Digital input with pullup), 4:Duty Cycle 5: PW
+15  Input1_Config   Byte  0: Digital, 1:Analog, 2:DS18B20, 3:DHT11 (NB. 0x80 is Digital input with pullup), 4:Duty Cycle 5: PW
+16  Input2_Config   Byte  0: Digital, 1:Analog, 2:DS18B20, 3:DHT11 (NB. 0x80 is Digital input with pullup), 4:Duty Cycle 5: PW
+17  Input3_Config   Byte  0: Digital, 1:Analog, 2:DS18B20, 3:DHT11 (NB. 0x80 is Digital input with pullup), 4:Duty Cycle 5: PW
 18  Set Brightness  Byte  0..255. Scaled max brightness (default is 40)
 19  Update Pixels   Byte  dummy value - forces updating of neopixels
 20  Reset           Byte  dummy value - resets all values to initial state
