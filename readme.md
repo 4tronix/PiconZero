@@ -16,7 +16,7 @@ All files are Licensed under Creative Commons BY-SA
 See creativecommons.org/licenses/by-sa/3.0/ for details
  - piconzero.py (this is the main Python library)
  - various python example files
- - PiconZero08.ino (this is the ATMega code)
+ - PiconZero10.ino (this is the ATMega code)
 
 Programming the ATMega
 ======================
@@ -27,4 +27,4 @@ You can reprogram the ATMega with your own code by using a USB to Serial convert
  - VCC
  - N/A (usually CTS, but not used)
  - GND
-There are many sources of this converter including the 4tronix shop: http://4tronix.co.uk/store/index.php?rt=product/product&product_id=533
+There are many sources of this converter including the 4tronix shop: https://shop.4tronix.co.uk/products/usb340g
