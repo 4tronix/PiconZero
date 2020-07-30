@@ -4,6 +4,7 @@
 # Press Ctrl-C to stop
 #
 
+from __future__ import print_function
 import piconzero as pz, time
 
 #======================================================================

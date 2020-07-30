@@ -2,6 +2,7 @@
 #
 # Basic test of HC-SR04 ultrasonic sensor on Picon Zero
 
+from __future__ import print_function
 import hcsr04, time
 
 hcsr04.init()

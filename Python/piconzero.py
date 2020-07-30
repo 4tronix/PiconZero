@@ -1,6 +1,7 @@
 # Python library for 4tronix Picon Zero
 # Note that all I2C accesses are wrapped in try clauses with repeats
 
+from __future__ import print_function
 import smbus, time
 
 bus = smbus.SMBus(1) # For revision 1 Raspberry Pi, change to bus = smbus.SMBus(0)
@@ -31,7 +32,7 @@ def getRevision():
     for i in range(RETRIES):
         try:
             rval = bus.read_word_data (pzaddr, 0)
-            return [rval/256, rval%256]
+            return [rval//256, rval%256]
         except:
             if (DEBUG):
                 print("Error in getRevision(), retrying")

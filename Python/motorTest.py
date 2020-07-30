@@ -4,6 +4,7 @@
 #
 # To check wiring is correct ensure the order of movement as above is correct
 
+from __future__ import print_function
 import piconzero as pz, time
 
 #======================================================================

@@ -3,6 +3,7 @@
 # GNU GPL V3
 # Test code for 4tronix Picon Zero
 
+from __future__ import print_function
 import piconzero as pz, time
 
 lastPix = 0
@@ -18,7 +19,7 @@ print(rev[0], rev[1])
 try:
     while True:
         ana0 = pz.readInput(0)
-        #print ana0, int(0.5 + ana0/113.7), int(ana0/7)
+        print (ana0, int(0.5 + ana0/113.7), int(ana0/7))
         pz.setOutput(0, ana0/10)
         #setMotor(0, ana0/10)
         if (int(0.4 + ana0*numpixels/1000) != lastPix):

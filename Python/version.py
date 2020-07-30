@@ -3,6 +3,7 @@
 # GNU GPL V3
 # Test code for 4tronix Picon Zero
 
+from __future__ import print_function
 import piconzero as pz
 
 pz.init()
